@@ -1,0 +1,114 @@
+<div class="page" data-name="project">
+    <div class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner">
+            <div class="left">
+                <a class="button icon-only" title="Close Project" id="btn-reload">
+                    <i class="icon f7-icons text-color-gray">multiply_circle</i>
+                </a>
+            </div>
+            <div class="title" id="project-name" style="font-weight:normal;">Project</div>
+            <div class="right">
+                <a class="button icon-only text-color-deeporange" id="btn-app-dir" title="Directory">
+                    <i class="icon f7-icons">folder</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="toolbar toolbar-top">
+        <div class="toolbar-inner">
+            <a href="#" class="link"></a>
+            <a href="#" class="link padding popover-open" data-popover=".popover-links"><button class="button button-outline button-round button-small" style="font-weight:normal;">Create New File</button></a>
+            <a href="#" class="link"></a>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="treeview">
+            <div class="treeview-item">
+                <div class="treeview-item-root">
+                    <div class="treeview-toggle"></div>
+                    <div class="treeview-item-content">
+                        <i class="icon material-icons">folder</i>
+                        <div class="treeview-item-label">css</div>
+                    </div>
+                </div>
+                <div class="treeview-item-children" id="list-file-css-new"></div>
+            </div>
+            <div class="treeview-item">
+                <div class="treeview-item-root">
+                    <div class="treeview-toggle"></div>
+                    <div class="treeview-item-content">
+                        <i class="icon material-icons">folder</i>
+                        <div class="treeview-item-label">file</div>
+                    </div>
+                </div>
+                <div class="treeview-item-children" id="list-file-other-new"></div>
+            </div>
+            <div class="treeview-item">
+                <div class="treeview-item-root">
+                    <div class="treeview-toggle"></div>
+                    <div class="treeview-item-content">
+                        <i class="icon material-icons">folder</i>
+                        <div class="treeview-item-label">img</div>
+                    </div>
+                </div>
+                <div class="treeview-item-children" id="list-file-img-new"></div>
+            </div>
+            <div class="treeview-item">
+                <div class="treeview-item-root">
+                    <div class="treeview-toggle"></div>
+                    <div class="treeview-item-content">
+                        <i class="icon material-icons">folder</i>
+                        <div class="treeview-item-label">js_app</div>
+                    </div>
+                </div>
+                <div class="treeview-item-children" id="list-file-js-new"></div>
+            </div>
+            <div class="treeview-item">
+                <div class="treeview-item-root">
+                    <div class="treeview-toggle"></div>
+                    <div class="treeview-item-content">
+                        <i class="icon material-icons">folder</i>
+                        <div class="treeview-item-label">pages</div>
+                    </div>
+                </div>
+                <div class="treeview-item-children" id="list-file-html-new"></div>
+            </div>
+            <div class="treeview-item" data-dir="root" data-file="index.html" style="cursor: pointer;" id="btn-code-editor" data-type="html">
+                <div class="treeview-item-root">
+                    <div class="treeview-item-content">
+                        <i class="icon f7-icons">document_text_fill</i>
+                        <div class="treeview-item-label">index.html</div>
+                    </div>
+                </div>
+            </div>
+            <div class="treeview-item" data-dir="root" data-file="main.js" style="cursor: pointer;" id="btn-code-editor" data-type="javascript">
+                <div class="treeview-item-root">
+                    <div class="treeview-item-content">
+                        <i class="icon f7-icons">document_text_fill</i>
+                        <div class="treeview-item-label">main.js</div>
+                    </div>
+                </div>
+            </div>
+            <div class="treeview-item" data-dir="root" data-file="package.json" style="cursor: pointer;" id="btn-code-editor" data-type="json">
+                <div class="treeview-item-root">
+                    <div class="treeview-item-content">
+                        <i class="icon f7-icons">document_text_fill</i>
+                        <div class="treeview-item-label">package.json</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popover popover-links" id="create-file">
+        <div class="popover-inner">
+            <div class="list">
+                <ul>
+                    <li><a class="list-button item-link" href="javascript:void(0);" id="btn-create-html">HTML (Page)</a></li>
+                    <li><a class="list-button item-link" href="javascript:void(0);" id="btn-create-js">JS (Logic)</a></li>
+                    <li><a class="list-button item-link" href="javascript:void(0);" id="btn-create-css">CSS (Style)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

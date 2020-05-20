@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="theme-dark">
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; font-src * 'unsafe-inline' 'unsafe-eval' data:; connect-src * 'unsafe-inline'; frame-src *; media-src *;">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/framework7.bundle.min.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <link rel="stylesheet" href="fonts/material-icons.css">
+    <link rel="stylesheet" href="designer/grapesjs/css/grapes.min.css">
+    <link rel="stylesheet" href="../node_modules/xterm/css/xterm.css" />
+    <title>Pro7</title>
+</head>
+
+<body class="color-theme-blue">
+    <div id="app">
+        <div class="statusbar"></div>
+        <div class="appbar" style="background-color:#2C333B">
+            <div class="appbar-inner no-padding">
+                <div class="left no-margin text-color-white" style="height: 100%;width: 90%;-webkit-app-region: drag;padding-left: 15px;">
+                    Pro7&nbsp;<span style="font-size: xx-small;">0.0.1</span>
+                </div>
+                <div class="right" style="padding-right: 11px;">
+                    <a class="link" title="Dev Tools" id="btn-dev" style="margin-right: 10px;">
+                        <i class="icon f7-icons color-white">gear_alt</i>
+                    </a>
+                    <a class="link" title="Reload" id="btn-reload" style="margin-right: 10px;">
+                        <i class="icon f7-icons color-white">arrow_2_circlepath_circle</i>
+                    </a>
+                    <a class="link" title="Minimize" id="btn-minimize" style="margin-right: 10px;">
+                        <i class="icon f7-icons color-white">minus_circle</i>
+                    </a>
+                    <a class="link" title="Minimize" id="btn-maximize" style="margin-right: 10px;">
+                        <i class="icon f7-icons color-white">square</i>
+                    </a>
+                    <a class="link" title="Close" id="btn-close">
+                        <i class="icon f7-icons color-white">multiply_circle</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-left panel-cover panel-resizable">
+            <div id="view-left" class="view view-left">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-bg"></div>
+                        <div class="navbar-inner">
+                            <div class="title" style="font-weight:normal;">Project</div>
+                            <div class="right">
+                                <a class="button icon-only text-color-deeporange" title="Open Project Directory" id="btn-project-folder-open">
+                                    <i class="icon f7-icons">folder</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="list no-margin no-hairlines no-hairlines-between">
+                            <ul id="list-file-project"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="views ios-edges">
+            <div id="view-main" class="view view-main"></div>
+        </div>
+    </div>
+
+    <div class="sheet-modal sheet-terminal">
+        <div class="toolbar">
+            <div class="toolbar-inner">
+                <div class="left">Terminal</div>
+                <div class="right">
+                    <a class="link sheet-close text-color-white" href="#">
+                        <i class="icon f7-icons">multiply</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="sheet-modal-inner" id="term"></div>
+    </div>
+
+    <script src="js/framework7.bundle.min.js"></script>
+    <script src="designer/grapesjs/grapes.min.js"></script>
+    <script src="designer/grapesjs/grapesjs-plugin-export.min.js"></script>
+    <script src="designer/js/constant.js"></script>
+    <script src="designer/js/routes.js"></script>
+    <script src="designer/js/init.js"></script>
+    <script src="designer/js/listener.js"></script>
+    <script src="designer/js/project.js"></script>
+    <script src="designer/js/editor.js"></script>
+    <script src="designer/js/snippet.js"></script>
+    <script src="designer/js/designer.js"></script>
+</body>
+
+</html>

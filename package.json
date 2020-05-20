@@ -1,0 +1,88 @@
+{
+    "name": "pro7",
+    "productName": "Pro7",
+    "version": "1.1.5",
+    "description": "Pro7 is Integrated Development Environment for build Progressive Web Application (PWA) based on Framework7. It enables user to design, develop, debug, test, and release application quickly.",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "postinstall": "electron-builder install-app-deps",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder --publish never",
+        "rebuild": "electron-rebuild -f -w node-pty"
+    },
+    "build": {
+        "appId": "com.nowdb.pro7",
+        "dmg": {
+            "contents": [
+                {
+                    "x": 110,
+                    "y": 150
+                },
+                {
+                    "x": 240,
+                    "y": 150,
+                    "type": "link",
+                    "path": "/Applications"
+                }
+            ],
+            "icon": "build/icon.icns"
+        },
+        "linux": {
+            "target": "AppImage"
+        },
+        "win": {
+            "icon": "www/img/logo.png",
+            "target": "portable"
+        }
+    },
+    "publish": "never",
+    "keywords": [
+        "NowDB",
+        "UI Builder"
+    ],
+    "author": {
+        "name": "Taufik Sulaeman P",
+        "email": "taufiksu@gmail.com"
+    },
+    "license": "CC0-1.0",
+    "devDependencies": {
+        "electron": "^9.0.0",
+        "electron-builder": "^22.4.1",
+        "electron-pdf-window": "^1.0.12",
+        "electron-rebuild": "^1.10.1"
+    },
+    "dependencies": {
+        "beautify": "0.0.8",
+        "child_process": "^1.0.2",
+        "electron-packager": "^14.2.1",
+        "electron-prompt": "^1.5.1",
+        "electron-reload": "^1.5.0",
+        "fs": "0.0.1-security",
+        "fs-extra": "^9.0.0",
+        "getmac": "^5.0.0",
+        "js-beautify": "^1.11.0",
+        "localStorage": "^1.0.4",
+        "mkdirp": "^1.0.4",
+        "monaco-editor": "^0.20.0",
+        "monaco-loader": "^0.8.2",
+        "monaco-themes": "^0.3.3",
+        "node-pty": "^0.9.0",
+        "open-file-explorer": "^1.0.2",
+        "pretty": "^2.0.0",
+        "rebuild": "^0.1.2",
+        "sha1": "^1.1.1",
+        "shelljs": "^0.8.3",
+        "sudo-prompt": "^9.1.1",
+        "xterm": "^4.5.0",
+        "xterm-addon-fit": "^0.3.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/NowDB/Pro7.git"
+    },
+    "bugs": {
+        "url": "https://github.com/NowDB/Pro7/issues"
+    },
+    "homepage": "https://github.com/NowDB/Pro7#readme"
+}

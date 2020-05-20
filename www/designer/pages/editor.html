@@ -1,0 +1,145 @@
+<div class="page" data-name="editor">
+    <div class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="#" class="link icon-only panel-open" data-panel="left" id="btn-panel-left">
+                    <i class="icon material-icons color-gray">menu</i>
+                </a>
+                <a class="button sheet-open" data-sheet=".sheet-terminal">
+                    <i class="icon f7-icons color-gray">greaterthan_square</i>
+                    <span style="font-weight: normal;font-size:smaller;" class="text-color-white">Terminal</span>
+                </a>
+                <a class="button text-color-pink" id="btn-app-distribute">
+                    <i class="icon f7-icons">square_stack_3d_up</i>
+                    <span style="font-weight: normal;font-size:smaller;" class="text-color-white">Build</span>
+                </a>
+                <a class="button text-color-teal" id="btn-app-run">
+                    <i class="icon f7-icons">arrowtriangle_right_square</i>
+                    <span style="font-weight: normal;font-size:smaller;" class="text-color-white">Run</span>
+                </a>
+            </div>
+            <div class="right">
+                <a class="button icon-only text-color-gray popover-open btn-snippet-js" title="Dialog" href="#" data-popover=".snippet-dialog" style="display: none;">
+                    <i class="icon material-icons">call_to_action</i>
+                </a>
+                <a class="button icon-only text-color-gray popover-open btn-snippet-js" title="Toast" href="#" data-popover=".snippet-toast" style="display: none;">
+                    <i class="icon material-icons">warning</i>
+                </a>
+                <a class="button icon-only text-color-gray popover-open btn-snippet-js" title="Notifications" href="#" data-popover=".snippet-notifications" style="display: none;">
+                    <i class="icon material-icons">notifications</i>
+                </a>
+                <a class="button icon-only text-color-gray popover-open btn-snippet-js" title="Event on Selector" href="#" data-popover=".snippet-selector" style="display: none;">
+                    <i class="icon material-icons">check_box</i>
+                </a>
+                <a class="button icon-only text-color-gray popover-open btn-snippet-js" title="Event on Page" href="#" data-popover=".snippet-page" style="display: none;">
+                    <i class="icon material-icons">view_carousel</i>
+                </a>
+                <a class="button icon-only text-color-gray popover-open btn-snippet-js" title="Condition" href="#" data-popover=".snippet-if" style="display: none;">
+                    <i class="icon material-icons">device_hub</i>
+                </a>
+                <a class="button icon-only text-color-gray" title="UI Designer" id="btn-design-html" style="display: none;">
+                    <i class="icon material-icons">web</i>
+                </a>
+                <a class="button icon-only text-color-red" title="Remove" id="btn-code-remove" style="display: none;">
+                    <i class="icon material-icons">delete</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="toolbar tabbar toolbar-top tabbar-scrollable no-shadow">
+        <div class="toolbar-inner" id="tab-link-editor"></div>
+    </div>
+    <div class="tabs" id="tab-editor"></div>
+    <div class="popover snippet-if">
+        <div class="popover-inner">
+            <div class="list">
+                <ul>
+                    <li class="item-divider">If Logic</li>
+                    <li><a class="list-button item-link" href="#" id="code-if">if</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-if-else">if else</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-if-else-if">if else if</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="popover snippet-page">
+        <div class="popover-inner">
+            <div class="list">
+                <ul>
+                    <li class="item-divider">Page Event Handler</li>
+                    <li><a class="list-button item-link" href="#" id="code-page-init">page init</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-reinit">page re-init</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-beforein">page beforein</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-afterin">page afterin</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-beforeout">page beforeout</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-afterout">page afterout</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-afterin-preloader">with preloader</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-afterin-progress">with progressbar</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-afterin-progress-multi">with progressbar colorfull</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-afterin-dialog-preloader">with dialog preloader</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-page-afterin-dialog-progress">with dialog progress</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="popover snippet-selector">
+        <div class="popover-inner">
+            <div class="list">
+                <ul>
+                    <li class="item-divider">Selector Event Handler</li>
+                    <li><a class="list-button item-link" href="#" id="code-selector-click">click</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-selector-change">change</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-selector-keyup">keyup</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-selector-keydown">keydown</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="popover snippet-notifications">
+        <div class="popover-inner">
+            <div class="list">
+                <ul>
+                    <li class="item-divider">Notification</li>
+                    <li><a class="list-button item-link" href="#" id="code-notifications-full-layout">Close Timer</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-notifications-close-button">Close Button</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-notifications-click-close">Click to Close</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="popover snippet-toast">
+        <div class="popover-inner">
+            <div class="list">
+                <ul>
+                    <li class="item-divider">Toast</li>
+                    <li><a class="list-button item-link" href="#" id="code-toast-top">Top Timer</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-toast-bottom">Bottom Timer</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-toast-center">Center Timer</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-toast-center-icon">Center Icon Timer</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-toast-close-button">Close Button</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-toast-custom-close-button">Custom Close Button</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="popover snippet-dialog">
+        <div class="popover-inner">
+            <div class="list">
+                <ul>
+                    <li class="item-divider">Popup Dialog</li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-alert">alert</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-horizontal">horizontal button</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-vertical">vertical button</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-confirmation">confirmation</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-prompt">prompt</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-login">login</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-password">password</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-preloader">preloader</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-progress">progress</a></li>
+                    <li><a class="list-button item-link" href="#" id="code-dialog-progress-percent">progress %</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+{
+    "name": "myapp",
+    "productName": "My App",
+    "version": "0.0.1",
+    "description": "My App Description",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "postinstall": "electron-builder install-app-deps",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder --publish never"
+    },
+    "build": {
+        "appId": "com.domain.sub",
+        "dmg": {
+            "contents": [{
+                    "x": 110,
+                    "y": 150
+                },
+                {
+                    "x": 240,
+                    "y": 150,
+                    "type": "link",
+                    "path": "/Applications"
+                }
+            ],
+            "icon": "build/icon.icns"
+        },
+        "linux": {
+            "target": "AppImage"
+        },
+        "win": {
+            "icon": "www/img/logo.png",
+            "target": "portable"
+        }
+    },
+    "publish": "never",
+    "keywords": [
+        "Great",
+        "Application"
+    ],
+    "author": "My Team",
+    "license": "CC0-1.0",
+    "devDependencies": {
+        "electron": "^8.2.3",
+        "electron-builder": "^22.4.1"
+    },
+    "dependencies": {
+        "electron-packager": "^14.2.1",
+        "electron-prompt": "^1.5.1",
+        "electron-reload": "^1.5.0",
+        "fs-extra": "^9.0.0",
+        "getmac": "^5.0.0",
+        "localStorage": "^1.0.4",
+        "mkdirp": "^1.0.4",
+        "sha1": "^1.1.1"
+    }
+}

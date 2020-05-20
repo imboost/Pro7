@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; font-src * 'unsafe-inline' 'unsafe-eval' data:; connect-src * 'unsafe-inline'; frame-src *; media-src *;">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/framework7.bundle.min.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <link rel="stylesheet" href="fonts/material-icons.css">
+    <title>Visual7</title>
+</head>
+
+<body class="color-theme-blue">
+    <div id="app">
+        <div class="statusbar"></div>
+        <div class="appbar bg-color-teal">
+            <div class="appbar-inner no-padding">
+                <div class="left no-margin text-color-white" style="height: 100%;width: 90%;-webkit-app-region: drag;padding-left: 15px;">
+                    My Application
+                </div>
+                <div class="right" style="padding-right: 11px;">
+                    <a class="link" title="Minimize" id="btn-minimize" style="margin-right: 10px;">
+                        <i class="icon f7-icons color-white">minus_circle</i>
+                    </a>
+                    <a class="link" title="Close" id="btn-close">
+                        <i class="icon f7-icons color-white">multiply_circle</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="views ios-edges">
+            <div id="view-main" class="view view-main"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="js_app/constant.js"></script>
+    <script type="text/javascript" src="js_app/routes.js"></script>
+    <script type="text/javascript" src="js_app/init.js"></script>
+    <script type="text/javascript" src="js_app/listener.js"></script>
+</body>
+
+</html>
