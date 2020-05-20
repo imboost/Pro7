@@ -2,8 +2,8 @@ var $$ = Dom7;
 
 var app = new Framework7({
     root: '#app',
-    id: 'net.nowdb.visual7',
-    name: 'Visual7',
+    id: 'net.nowdb.pro7',
+    name: 'Pro7',
     theme: 'aurora',
     routes: routes,
     touch: {

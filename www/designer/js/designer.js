@@ -14,8 +14,8 @@ $$(document).on('page:afterin', '.page[data-name="designer"]', function(callback
     var filename = callback.detail.route.params.filename;
     file_open_active = filename;
 
-    var dir_visual7 = path.join(os.homedir(), 'Visual7/');
-    var dir_project = path.join(dir_visual7, project);
+    var dir_pro7 = path.join(os.homedir(), 'Pro7/');
+    var dir_project = path.join(dir_pro7, project);
     var dir_project_www = path.join(dir_project, 'www/');
 
     $$(document).find('#page-title').html(filename);
@@ -154,8 +154,8 @@ $$(document).on('page:afterin', '.page[data-name="designer"]', function(callback
 //     editor_value = editor.getHtml();
 //     editor_value = pretty(editor_value, { ocd: true });
 
-//     var dir_visual7 = path.join(os.homedir(), 'Visual7/');
-//     var dir_project = path.join(dir_visual7, project_open_active);
+//     var dir_pro7 = path.join(os.homedir(), 'Pro7/');
+//     var dir_project = path.join(dir_pro7, project_open_active);
 //     var dir_project_www = path.join(dir_project, 'www/');
 
 //     fs.writeFileSync(path.join(dir_project_www, 'pages/' + file_open_active), editor_value, 'utf-8');

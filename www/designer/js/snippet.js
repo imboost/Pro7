@@ -301,7 +301,7 @@ $$(document).on('click', '#code-notifications-full-layout', function() {
     var lineContent = splitedText[position.lineNumber - 1];
     var textToInsert = "app.notification.create({\n" +
         "\ticon: '<i class=\"icon material-icons\">notifications</i>',\n" +
-        "\ttitle: 'Visual7',\n" +
+        "\ttitle: 'Pro7',\n" +
         "\ttitleRightText: 'now',\n" +
         "\tsubtitle: 'This is a subtitle',\n" +
         "\ttext: 'This is a simple notification message',\n" +
@@ -326,7 +326,7 @@ $$(document).on('click', '#code-notifications-close-button', function() {
     var lineContent = splitedText[position.lineNumber - 1];
     var textToInsert = "app.notification.create({\n" +
         "\ticon: '<i class=\"icon material-icons\">notifications</i>',\n" +
-        "\ttitle: 'Visual7',\n" +
+        "\ttitle: 'Pro7',\n" +
         "\ttitleRightText: 'now',\n" +
         "\tsubtitle: 'This is a subtitle',\n" +
         "\ttext: 'This is a simple notification message',\n" +
@@ -351,7 +351,7 @@ $$(document).on('click', '#code-notifications-click-close', function() {
     var lineContent = splitedText[position.lineNumber - 1];
     var textToInsert = "app.notification.create({\n" +
         "\ticon: '<i class=\"icon material-icons\">notifications</i>',\n" +
-        "\ttitle: 'Visual7',\n" +
+        "\ttitle: 'Pro7',\n" +
         "\ttitleRightText: 'now',\n" +
         "\tsubtitle: 'This is a subtitle',\n" +
         "\ttext: 'This is a simple notification message',\n" +

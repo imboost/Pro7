@@ -63,17 +63,17 @@ terminal_home();
 
 if (os.platform() === "darwin") {
     ptyProcess.write('cd ~\r');
-    ptyProcess.write('cd Visual7\r');
+    ptyProcess.write('cd Pro7\r');
     ptyProcess.write('cd ' + active_project + '\r');
     ptyProcess.write('clear\r');
 } else if (os.platform() === "linux") {
     ptyProcess.write('cd ~\r');
-    ptyProcess.write('cd Visual7\r');
+    ptyProcess.write('cd Pro7\r');
     ptyProcess.write('cd ' + active_project + '\r');
     ptyProcess.write('clear\r');
 } else {
     ptyProcess.write('cd %homepath%\r');
-    ptyProcess.write('cd Visual7\r');
+    ptyProcess.write('cd Pro7\r');
     ptyProcess.write('cd ' + active_project + '\r');
     ptyProcess.write('cls\r');
 }
@@ -99,12 +99,12 @@ $$(document).on('click', '#btn-application-new-electron', function() {
 
         var fileName = fileName.replace(/\s+/g, '_');
 
-        var dir_project = path.join(active_visual7, fileName);
+        var dir_project = path.join(active_pro7, fileName);
         var dir_project_www = path.join(dir_project, 'www/');
 
-        fs.readdir(active_visual7, (err, dir) => {
+        fs.readdir(active_pro7, (err, dir) => {
             if (err) {
-                fs.mkdirSync(active_visual7);
+                fs.mkdirSync(active_pro7);
                 create_app();
             } else {
                 create_app();
@@ -143,7 +143,7 @@ $$(document).on('click', '#btn-application-new-electron', function() {
                         app.progressbar.hide();
 
                         ptyProcess.write('cd ~\r');
-                        ptyProcess.write('cd Visual7\r');
+                        ptyProcess.write('cd Pro7\r');
                         ptyProcess.write('cd ' + fileName + '\r');
                         ptyProcess.write('npm install -D electron@latest\r');
                         ptyProcess.write('npm install\r');
@@ -153,7 +153,7 @@ $$(document).on('click', '#btn-application-new-electron', function() {
                         app.progressbar.hide();
 
                         ptyProcess.write('cd ~\r');
-                        ptyProcess.write('cd Visual7\r');
+                        ptyProcess.write('cd Pro7\r');
                         ptyProcess.write('cd ' + fileName + '\r');
                         ptyProcess.write('npm install -D electron@latest\r');
                         ptyProcess.write('npm install\r');
@@ -163,7 +163,7 @@ $$(document).on('click', '#btn-application-new-electron', function() {
                         app.progressbar.hide();
 
                         ptyProcess.write('cd %homepath%\r');
-                        ptyProcess.write('cd Visual7\r');
+                        ptyProcess.write('cd Pro7\r');
                         ptyProcess.write('cd ' + fileName + '\r');
                         ptyProcess.write('npm install -D electron@latest\r');
                         ptyProcess.write('npm install\r');
@@ -192,9 +192,9 @@ $$(document).on('click', '#btn-application-new-electron', function() {
 list_project();
 
 function list_project() {
-    fs.readdir(active_visual7, (err, dir) => {
+    fs.readdir(active_pro7, (err, dir) => {
         if (err) {
-            var dir = active_visual7;
+            var dir = active_pro7;
             fs.mkdirSync(dir);
         } else {
             if (dir.length === 0) {
@@ -222,22 +222,22 @@ function list_project() {
 
 $$(document).on('click', '#btn-project-open', function() {
     active_project = $$(this).attr('data-project');
-    active_dir_project = path.join(active_visual7, active_project);
+    active_dir_project = path.join(active_pro7, active_project);
     active_dir_project_www = path.join(active_dir_project, 'www/');
 
     app.sheet.close('.sheet-terminal');
 
     if (os.platform() === "darwin") {
         ptyProcess.write('cd ~\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
     } else if (os.platform() === "linux") {
         ptyProcess.write('cd ~\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
     } else {
         ptyProcess.write('cd %homepath%\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
     }
 
@@ -248,15 +248,15 @@ $$(document).on('click', '#btn-project-open', function() {
 $$(document).on('click', '#btn-project-folder-open', function() {
     if (os.platform() === "darwin") {
         const { spawn } = require('child_process');
-        let openTerminal = spawn('open', [active_visual7]);
+        let openTerminal = spawn('open', [active_pro7]);
         openTerminal.on('error', (err) => { console.log(err); });
     } else if (os.platform() === "linux") {
         const { spawn } = require('child_process');
-        let openTerminal = spawn('nautilus', [active_visual7]);
+        let openTerminal = spawn('nautilus', [active_pro7]);
         openTerminal.on('error', (err) => { console.log(err); });
     } else {
         const openExplorer = require('open-file-explorer');
-        openExplorer(active_visual7, err => {
+        openExplorer(active_pro7, err => {
             if (err) {
                 console.log(err);
             }
@@ -280,17 +280,17 @@ $$(document).on('click', '#btn-app-run', function() {
 
     if (os.platform() === "darwin") {
         ptyProcess.write('cd ~\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
         ptyProcess.write('electron .\r');
     } else if (os.platform() === "linux") {
         ptyProcess.write('cd ~\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
         ptyProcess.write('electron .\r');
     } else {
         ptyProcess.write('cd %homepath%\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
         ptyProcess.write('electron .\r');
     }
@@ -301,20 +301,20 @@ $$(document).on('click', '#btn-app-distribute', function() {
 
     if (os.platform() === "darwin") {
         ptyProcess.write('cd ~\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
         ptyProcess.write('npm run dist\r');
         ptyProcess.write('cd dist\r');
         ptyProcess.write('open .\r');
     } else if (os.platform() === "linux") {
         ptyProcess.write('cd ~\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
         ptyProcess.write('npm run dist\r');
-        ptyProcess.write('nautilus ~/Visual7/' + active_project + '/dist\r');
+        ptyProcess.write('nautilus ~/Pro7/' + active_project + '/dist\r');
     } else {
         ptyProcess.write('cd %homepath%\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
         ptyProcess.write('npm run dist\r');
         ptyProcess.write('cd dist\r');
@@ -327,10 +327,10 @@ $$(document).on('click', '#btn-app-dir', function() {
         ptyProcess.write('cd ~/Visual/' + active_project + '\r');
         ptyProcess.write('open .\r');
     } else if (os.platform() === "linux") {
-        ptyProcess.write('nautilus ~/Visual7/' + active_project + '\r');
+        ptyProcess.write('nautilus ~/Pro7/' + active_project + '\r');
     } else {
         ptyProcess.write('cd %homepath%\r');
-        ptyProcess.write('cd Visual7\r');
+        ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
         ptyProcess.write('explorer .\r');
     }
@@ -683,19 +683,19 @@ document.addEventListener('keydown', function(event) {
  */
 
 $$(document).on('click', '#btn-nowdb-windows-portable', function() {
-    downloadNowDB("https://github.com/NowDB/Data-Manager/blob/master/NowDB%20Data%20Manager%201.1.0.exe?raw=true", path.join(active_visual7, 'NowDB Data Manager 1.1.0.exe'));
+    downloadNowDB("https://github.com/NowDB/Data-Manager/blob/master/NowDB%20Data%20Manager%201.1.0.exe?raw=true", path.join(active_pro7, 'NowDB Data Manager 1.1.0.exe'));
 });
 
 $$(document).on('click', '#btn-nowdb-windows-installer', function() {
-    downloadNowDB("https://github.com/NowDB/Data-Manager/blob/master/NowDB%20Data%20Manager%20Setup%201.1.0.exe?raw=true", path.join(active_visual7, 'NowDB Data Manager Setup 1.1.0.exe'));
+    downloadNowDB("https://github.com/NowDB/Data-Manager/blob/master/NowDB%20Data%20Manager%20Setup%201.1.0.exe?raw=true", path.join(active_pro7, 'NowDB Data Manager Setup 1.1.0.exe'));
 });
 
 $$(document).on('click', '#btn-nowdb-macos-installer', function() {
-    downloadNowDB("https://github.com/NowDB/Data-Manager/blob/master/NowDB%20Data%20Manager-1.1.0.dmg?raw=true", path.join(active_visual7, 'NowDB Data Manager-1.1.0.dmg'));
+    downloadNowDB("https://github.com/NowDB/Data-Manager/blob/master/NowDB%20Data%20Manager-1.1.0.dmg?raw=true", path.join(active_pro7, 'NowDB Data Manager-1.1.0.dmg'));
 });
 
 $$(document).on('click', '#btn-nowdb-linux-portable', function() {
-    downloadNowDB("https://github.com/NowDB/Data-Manager/blob/master/NowDB%20Data%20Manager-1.1.0.AppImage?raw=true", path.join(active_visual7, 'NowDB Data Manager-1.1.0.AppImage'));
+    downloadNowDB("https://github.com/NowDB/Data-Manager/blob/master/NowDB%20Data%20Manager-1.1.0.AppImage?raw=true", path.join(active_pro7, 'NowDB Data Manager-1.1.0.AppImage'));
 });
 
 function downloadNowDB(url, dest, cb) {
@@ -727,12 +727,12 @@ function downloadNowDB(url, dest, cb) {
                 dialog_nowdb.close();
 
                 if (os.platform() === "darwin") {
-                    ptyProcess.write('open ~/Visual7\r');
+                    ptyProcess.write('open ~/Pro7\r');
                 } else if (os.platform() === "linux") {
-                    ptyProcess.write('nautilus ~/Visual7\r');
+                    ptyProcess.write('nautilus ~/Pro7\r');
                 } else {
                     ptyProcess.write('cd %homepath%\r');
-                    ptyProcess.write('cd Visual7\r');
+                    ptyProcess.write('cd Pro7\r');
                     ptyProcess.write('explorer .\r');
                 }
             });

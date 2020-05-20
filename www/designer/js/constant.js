@@ -25,7 +25,7 @@ let term = null;
 let ptyProcess = null;
 
 let active_os = os.homedir();
-let active_visual7 = path.join(os.homedir(), 'Visual7/');
+let active_pro7 = path.join(os.homedir(), 'Pro7/');
 let active_project = '';
 
 let active_dir_project = '';
@@ -59,9 +59,9 @@ var we = []; // window editor
 let editor = null;
 let blockManager = null;
 
-fs.readdir(path.join(os.homedir(), 'Visual7/'), (err, dir) => {
+fs.readdir(path.join(os.homedir(), 'Pro7/'), (err, dir) => {
     if (err) {
-        var dir = path.join(os.homedir(), 'Visual7/');
+        var dir = path.join(os.homedir(), 'Pro7/');
         fs.mkdirSync(dir);
     }
 });
