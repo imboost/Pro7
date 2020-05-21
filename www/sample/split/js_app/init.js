@@ -11,6 +11,12 @@ var app = new Framework7({
         fastclick: true,
         materialRipple: false
     },
+    panel: {
+        resizable: true,
+        leftBreakpoint: 700,
+        visibleBreakpoint: 700,
+        collapsedBreakpoint: 700,
+    }
 });
 
 var view_main = app.views.create('#view-main', {

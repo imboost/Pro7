@@ -13,10 +13,11 @@ $$(document).on('click', '#btn-code-editor', function() {
     active_file_dir = $$(this).attr('data-dir');
     active_file_type = $$(this).attr('data-type');
     if (active_file_dir === "root") {
-        if (active_file_name === "index.html") {
+        if (active_file_name === "index.html" ||
+            active_file_name === "main.js" ||
+            active_file_name === "manifest.json" ||
+            active_file_name === "sw.js") {
             active_file_path = path.join(active_dir_project_www, active_file_name);
-        } else if (active_file_name === "main.js" || active_file_name === "package.json") {
-            active_file_path = path.join(active_dir_project, active_file_name);
         }
     } else {
         active_file_path = path.join(active_dir_project_www, active_file_dir);
@@ -257,7 +258,8 @@ func_tab_open_sibling = function(file_replace) {
 func_tab_toolbar = function(file, file_type) {
     if (file === 'index.html' ||
         file === 'main.js' ||
-        file === 'package.json' ||
+        file === 'manifest.json' ||
+        file === 'sw.js' ||
         file === 'custom.css' ||
         file === 'framework7-icons.css' ||
         file === 'framework7.bundle.css' ||
@@ -270,7 +272,6 @@ func_tab_toolbar = function(file, file_type) {
         file === 'framework7.rtl.min.css' ||
         file === 'constant.js' ||
         file === 'init.js' ||
-        file === 'listener.js' ||
         file === 'routes.js' ||
         file === '404.html' ||
         file === 'about.html' ||

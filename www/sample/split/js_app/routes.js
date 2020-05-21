@@ -9,7 +9,10 @@ routes = [{
     {
         name: 'about',
         path: '/about/',
-        url: './pages/about.html'
+        url: './pages/about.html',
+        options: {
+            animate: false,
+        }
     },
     {
         path: '(.*)',

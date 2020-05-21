@@ -8,6 +8,10 @@ $$(document).on('page:afterin', '.page[data-name="home"]', function(callback) {
     }
 });
 
+$$(document).on('page:afterin', '.page[data-name="about"]', function(callback) {
+    console.log('about');
+});
+
 $$(document).on('click', '#btn-install', function() {
     deferredPrompt.prompt();
 

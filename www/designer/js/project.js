@@ -273,17 +273,17 @@ $$(document).on('click', '#btn-app-run', function() {
         ptyProcess.write('cd ~\r');
         ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
-        ptyProcess.write('electron .\r');
+        ptyProcess.write('serve www\r');
     } else if (os.platform() === "linux") {
         ptyProcess.write('cd ~\r');
         ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
-        ptyProcess.write('electron .\r');
+        ptyProcess.write('serve www\r');
     } else {
         ptyProcess.write('cd %homepath%\r');
         ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
-        ptyProcess.write('electron .\r');
+        ptyProcess.write('serve www\r');
     }
 });
 
@@ -294,22 +294,17 @@ $$(document).on('click', '#btn-app-distribute', function() {
         ptyProcess.write('cd ~\r');
         ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
-        ptyProcess.write('npm run dist\r');
-        ptyProcess.write('cd dist\r');
-        ptyProcess.write('open .\r');
+        ptyProcess.write('firebase deploy\r');
     } else if (os.platform() === "linux") {
         ptyProcess.write('cd ~\r');
         ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
-        ptyProcess.write('npm run dist\r');
-        ptyProcess.write('nautilus ~/Pro7/' + active_project + '/dist\r');
+        ptyProcess.write('firebase deploy\r');
     } else {
         ptyProcess.write('cd %homepath%\r');
         ptyProcess.write('cd Pro7\r');
         ptyProcess.write('cd ' + active_project + '\r');
-        ptyProcess.write('npm run dist\r');
-        ptyProcess.write('cd dist\r');
-        ptyProcess.write('explorer .\r');
+        ptyProcess.write('firebase deploy\r');
     }
 });
 
@@ -441,15 +436,6 @@ function list_other() {
         } else {
             for (var i = 0; i < dir.length; i++) {
                 let fileName = dir[i];
-                $$(document).find('#list-file-other').append(
-                    '<li>' +
-                    '    <div class="item-content">' +
-                    '       <div class="item-media"><i class="material-icons text-color-red" id="btn-remove-other" data-file="' + fileName + '" style="cursor: pointer;">delete</i></div>' +
-                    '       <div class="item-inner">' +
-                    '       <div class="item-title">' + fileName + '</div>' +
-                    '       </div>' +
-                    '    </div>' +
-                    '</li>');
                 $$(document).find('#list-file-other-new').append(
                     '<div class="treeview-item">' +
                     '    <div class="treeview-item-root">' +
@@ -465,23 +451,84 @@ function list_other() {
 }
 
 function list_img() {
-    fs.readdir(path.join(active_dir_project_www, 'img/'), (err, dir) => {
+    fs.readdir(path.join(active_dir_project_www, 'images/'), (err, dir) => {
         $$(document).find('#list-file-other-new').empty();
         if (dir.length === 0) {
             //Do Nothing
         } else {
             for (var i = 0; i < dir.length; i++) {
                 let fileName = dir[i];
-                $$(document).find('#list-file-img').append(
-                    '<li>' +
-                    '    <div class="item-content">' +
-                    '       <div class="item-media"><i class="material-icons text-color-red" id="btn-remove-other" data-file="' + fileName + '" style="cursor: pointer;">delete</i></div>' +
-                    '       <div class="item-inner">' +
-                    '       <div class="item-title">' + fileName + '</div>' +
-                    '       </div>' +
+                if (fileName === 'favicons') {
+                    $$(document).find('#list-file-img').append('<div class="treeview-item">' +
+                        '    <div class="treeview-item-root">' +
+                        '        <div class="treeview-toggle"></div>' +
+                        '        <div class="treeview-item-content">' +
+                        '            <i class="icon material-icons">folder</i>' +
+                        '            <div class="treeview-item-label">favicons</div>' +
+                        '        </div>' +
+                        '    </div>' +
+                        '    <div class="treeview-item-children" id="list-file-favicons"></div>' +
+                        '</div>');
+
+                    list_favicons();
+                } else if (fileName === 'icons') {
+                    $$(document).find('#list-file-img').append('<div class="treeview-item">' +
+                        '    <div class="treeview-item-root">' +
+                        '        <div class="treeview-toggle"></div>' +
+                        '        <div class="treeview-item-content">' +
+                        '            <i class="icon material-icons">folder</i>' +
+                        '            <div class="treeview-item-label">icons</div>' +
+                        '        </div>' +
+                        '    </div>' +
+                        '    <div class="treeview-item-children" id="list-file-icons"></div>' +
+                        '</div>');
+
+                    list_icons();
+                } else {
+                    $$(document).find('#list-file-img').append(
+                        '<div class="treeview-item">' +
+                        '    <div class="treeview-item-root">' +
+                        '        <div class="treeview-item-content">' +
+                        '            <i class="icon f7-icons">document_text_fill</i>' +
+                        '            <div class="treeview-item-label">' + fileName + '</div>' +
+                        '        </div>' +
+                        '    </div>' +
+                        '</div>');
+                }
+            }
+        }
+    });
+}
+
+function list_favicons() {
+    fs.readdir(path.join(path.join(active_dir_project_www, 'images/'), 'favicons/'), (err, dir) => {
+        if (dir.length === 0) {
+            //Do Nothing
+        } else {
+            for (var i = 0; i < dir.length; i++) {
+                let fileName = dir[i];
+                $$(document).find('#list-file-favicons').append(
+                    '<div class="treeview-item">' +
+                    '    <div class="treeview-item-root">' +
+                    '        <div class="treeview-item-content">' +
+                    '            <i class="icon f7-icons">document_text_fill</i>' +
+                    '            <div class="treeview-item-label">' + fileName + '</div>' +
+                    '        </div>' +
                     '    </div>' +
-                    '</li>');
-                $$(document).find('#list-file-img-new').append(
+                    '</div>');
+            }
+        }
+    });
+}
+
+function list_icons() {
+    fs.readdir(path.join(path.join(active_dir_project_www, 'images/'), 'icons/'), (err, dir) => {
+        if (dir.length === 0) {
+            //Do Nothing
+        } else {
+            for (var i = 0; i < dir.length; i++) {
+                let fileName = dir[i];
+                $$(document).find('#list-file-icons').append(
                     '<div class="treeview-item">' +
                     '    <div class="treeview-item-root">' +
                     '        <div class="treeview-item-content">' +
