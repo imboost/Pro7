@@ -1,4 +1,6 @@
 $$(document).on('page:afterin', '.page[data-name="home"]', function(callback) {
+    panel_left_morph();
+
     if (navigator.standalone) {
         $$(document).find('#btn-install').hide();
     } else if (matchMedia('(display-mode: standalone)').matches) {
@@ -6,6 +8,18 @@ $$(document).on('page:afterin', '.page[data-name="home"]', function(callback) {
     } else {
         $$(document).find('#btn-install').show();
     }
+});
+
+$$(document).on('page:afterin', '.page[data-name="about"]', function(callback) {
+    panel_left_morph();
+});
+
+$$(document).on('tab:show', '#tab-home', function() {
+    $$(document).find('#page-title').html('Home');
+});
+
+$$(document).on('tab:show', '#tab-info', function() {
+    $$(document).find('#page-title').html('Info');
 });
 
 $$(document).on('click', '#btn-install', function() {
