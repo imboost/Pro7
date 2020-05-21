@@ -89,13 +89,10 @@ $$(document).on('page:afterin', '.page[data-name="home"]', function(e) {
  * Project
  */
 
-$$(document).on('click', '#btn-application-new-electron', function() {
-    app.sheet.open('.sheet-terminal');
-
-    app.dialog.prompt('Name', 'Create New Project', function(fileName) {
+$$(document).on('click', '#btn-application-new', function() {
+    var layout = $$(this).attr('data-layout');
+    app.dialog.prompt('Name', 'Create a New Project', function(fileName) {
         navigate_main_to('/');
-
-        app.progressbar.show('multi');
 
         var fileName = fileName.replace(/\s+/g, '_');
 
@@ -116,64 +113,58 @@ $$(document).on('click', '#btn-application-new-electron', function() {
                 if (err) {
                     mkdir(dir_project);
                     mkdir(dir_project_www);
+
                     mkdir(path.join(dir_project_www, 'file/'));
 
-                    // Depedencies (F7 and Other)
+                    // Framework7
                     copyDir(path.join(__dirname, 'css/'), path.join(dir_project_www, 'css/'));
-                    copyDir(path.join(__dirname, 'fonts/'), path.join(dir_project_www, 'fonts/'));
-                    copyDir(path.join(__dirname, 'img/'), path.join(dir_project_www, 'img/'));
                     copyDir(path.join(__dirname, 'js/'), path.join(dir_project_www, 'js/'));
-                    copy(path.join(__dirname, 'LICENSE'), path.join(dir_project_www, 'LICENSE'));
+                    copyDir(path.join(__dirname, 'fonts/'), path.join(dir_project_www, 'fonts/'));
 
-                    if (os.platform() === "darwin") {
-                        copyDir(path.join(__dirname, '../build/'), path.join(dir_project, 'build/'));
+                    // PWA
+                    copyDir(path.join(path.join(__dirname, 'sample/'), 'images/'), path.join(dir_project_www, 'images/'));
+                    copy(path.join(path.join(__dirname, 'sample/'), 'LICENSE'), path.join(dir_project_www, 'LICENSE'));
+                    copy(path.join(path.join(__dirname, 'sample/'), 'main.js'), path.join(dir_project_www, 'main.js'));
+                    copy(path.join(path.join(__dirname, 'sample/'), 'manifest.json'), path.join(dir_project_www, 'manifest.json'));
+                    copy(path.join(path.join(__dirname, 'sample/'), 'sw.js'), path.join(dir_project_www, 'sw.js'));
+
+                    // Copy Layout
+                    if (layout === 'single') {
+                        var dir_layout = path.join(path.join(path.join(__dirname, 'sample/'), 'single/'), '/pages');
+                        var dir_js = path.join(path.join(path.join(__dirname, 'sample/'), 'single/'), '/js_app');
+                        var index = path.join(path.join(path.join(__dirname, 'sample/'), 'single/'), 'index.html');
+
+                        copyDir(dir_layout, path.join(dir_project_www, 'pages/'));
+                        copyDir(dir_js, path.join(dir_project_www, 'js_app/'));
+                        copy(index, path.join(dir_project_www, 'index.html'));
+                    } else if (layout === 'split') {
+                        var dir_layout = path.join(path.join(path.join(__dirname, 'sample/'), 'split/'), '/pages');
+                        var dir_js = path.join(path.join(path.join(__dirname, 'sample/'), 'split/'), '/js_app');
+                        var index = path.join(path.join(path.join(__dirname, 'sample/'), 'split/'), 'index.html');
+
+                        copyDir(dir_layout, path.join(dir_project_www, 'pages/'));
+                        copyDir(dir_js, path.join(dir_project_www, 'js_app/'));
+                        copy(index, path.join(dir_project_www, 'index.html'));
+                    } else if (layout === 'tabs') {
+                        var dir_layout = path.join(path.join(path.join(__dirname, 'sample/'), 'tabs/'), '/pages');
+                        var dir_js = path.join(path.join(path.join(__dirname, 'sample/'), 'tabs/'), '/js_app');
+                        var index = path.join(path.join(path.join(__dirname, 'sample/'), 'tabs/'), 'index.html');
+
+                        copyDir(dir_layout, path.join(dir_project_www, 'pages/'));
+                        copyDir(dir_js, path.join(dir_project_www, 'js_app/'));
+                        copy(index, path.join(dir_project_www, 'index.html'));
+                    } else if (layout === 'split_tabs') {
+                        var dir_layout = path.join(path.join(path.join(__dirname, 'sample/'), 'split_tabs/'), '/pages');
+                        var dir_js = path.join(path.join(path.join(__dirname, 'sample/'), 'split_tabs/'), '/js_app');
+                        var index = path.join(path.join(path.join(__dirname, 'sample/'), 'split_tabs/'), 'index.html');
+
+                        copyDir(dir_layout, path.join(dir_project_www, 'pages/'));
+                        copyDir(dir_js, path.join(dir_project_www, 'js_app/'));
+                        copy(index, path.join(dir_project_www, 'index.html'));
                     }
 
-                    // Template
-                    copy(path.join(path.join(path.join(__dirname, 'sample/'), 'basic/'), 'index.html'), path.join(dir_project_www, 'index.html'));
-                    copy(path.join(path.join(path.join(__dirname, 'sample/'), 'basic/'), 'main.js'), path.join(dir_project, 'main.js'));
-                    copy(path.join(path.join(path.join(__dirname, 'sample/'), 'basic/'), 'package.json'), path.join(dir_project, 'package.json'));
-                    copyDir(path.join(path.join(path.join(__dirname, 'sample/'), 'basic/'), 'js_app/'), path.join(dir_project_www, 'js_app/'));
-                    copyDir(path.join(path.join(path.join(__dirname, 'sample/'), 'basic/'), 'pages/'), path.join(dir_project_www, 'pages/'));
-
-                    // Finilization
                     list_project();
-
-                    if (os.platform() === "darwin") {
-                        app.progressbar.hide();
-
-                        ptyProcess.write('cd ~\r');
-                        ptyProcess.write('cd Pro7\r');
-                        ptyProcess.write('cd ' + fileName + '\r');
-                        ptyProcess.write('npm install -D electron@latest\r');
-                        ptyProcess.write('npm install\r');
-                        ptyProcess.write('cd ..');
-                        ptyProcess.write('clear\r');
-                    } else if (os.platform() === "linux") {
-                        app.progressbar.hide();
-
-                        ptyProcess.write('cd ~\r');
-                        ptyProcess.write('cd Pro7\r');
-                        ptyProcess.write('cd ' + fileName + '\r');
-                        ptyProcess.write('npm install -D electron@latest\r');
-                        ptyProcess.write('npm install\r');
-                        ptyProcess.write('cd ..\r');
-                        ptyProcess.write('clear\r');
-                    } else {
-                        app.progressbar.hide();
-
-                        ptyProcess.write('cd %homepath%\r');
-                        ptyProcess.write('cd Pro7\r');
-                        ptyProcess.write('cd ' + fileName + '\r');
-                        ptyProcess.write('npm install -D electron@latest\r');
-                        ptyProcess.write('npm install\r');
-                        ptyProcess.write('cd ..\r');
-                        ptyProcess.write('cls\r');
-                    }
                 } else {
-                    app.progressbar.hide();
-                    app.sheet.close('.sheet-terminal');
-
                     app.dialog.create({
                         title: '<span>Failed</span>',
                         text: 'Project Exist',
