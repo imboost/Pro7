@@ -13,6 +13,10 @@ $$(document).on('click', '#btn-maximize', function() {
     window.maximize();
 });
 
+$$(document).on('click', '#btn-app-preview', function() {
+    panel_right.open();
+});
+
 window.onresize = function() {
     panel_left_morph();
 

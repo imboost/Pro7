@@ -18,6 +18,7 @@ const os = require('os');
 const { Terminal } = require('xterm');
 const { FitAddon } = require('xterm-addon-fit');
 const beautify = require('beautify');
+var preview_port = null;
 
 function loadTheme(theme) {
     var path = '../node_modules/monaco-themes/themes/' + theme + '.json';

@@ -16,6 +16,8 @@ var view_left = app.views.create('#view-left', {
     url: '/'
 });
 
+var view_left = app.views.create('#view-right');
+
 var view_main = app.views.create('#view-main', {
     url: '/'
 });
@@ -24,4 +26,10 @@ var panel_left = app.panel.create({
     el: '.panel-left',
     resizable: true,
     visibleBreakpoint: 700
+});
+
+var panel_right = app.panel.create({
+    el: '.panel-right',
+    resizable: true,
+    closeByBackdropClick: false
 });
