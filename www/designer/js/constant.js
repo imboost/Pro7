@@ -15,11 +15,35 @@ const fs = require('fs-extra');
 const path = require('path');
 const url = require('url');
 const os = require('os');
-const editorLoader = require('../node_modules/monaco-editor/min/vs/loader.js');
-const editorRequire = editorLoader.require;
 const { Terminal } = require('xterm');
 const { FitAddon } = require('xterm-addon-fit');
 const beautify = require('beautify');
+
+function loadTheme(theme) {
+    var path = '../node_modules/monaco-themes/themes/' + theme + '.json';
+    return fetch(path).then(r => r.json()).then(data => {
+        return data;
+    });
+}
+
+const amdLoader = require('../node_modules/monaco-editor/min/vs/loader.js');
+const amdRequire = amdLoader.require;
+const amdDefine = amdLoader.require.define;
+
+function uriFromPath(_path) {
+    var pathName = path.resolve(_path).replace(/\\/g, '/');
+    if (pathName.length > 0 && pathName.charAt(0) !== '/') {
+        pathName = '/' + pathName;
+    }
+    return encodeURI('file://' + pathName);
+}
+
+amdRequire.config({
+    baseUrl: uriFromPath(path.join(__dirname, '../node_modules/monaco-editor/min'))
+});
+
+// workaround monaco-css not understanding the environment
+self.module = undefined;
 
 let term = null;
 let ptyProcess = null;

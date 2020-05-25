@@ -3,9 +3,20 @@ $$(document).on('page:init', '.page[data-name="editor"]', function(callback) {
 });
 
 $$(document).on('click', '#btn-code-editor', function() {
+    page_history = app.views.main.history;
+    page_count = page_history.length;
+    page_current = page_history[page_count - 1];
+
     // save previous
+    var active_file_path_designer = null;
+    var active_file_name_designer = null;
     if (active_file_name !== '') {
-        func_file_save(active_file_name, active_file_path);
+        if (page_current.split('/')[1] === "designer") {
+            active_file_path_designer = active_file_path;
+            active_file_name_designer = active_file_name;
+        } else {
+            func_file_save(active_file_name, active_file_path);
+        }
     }
 
     active_file_name = $$(this).attr('data-file');
@@ -30,18 +41,17 @@ $$(document).on('click', '#btn-code-editor', function() {
     active_tab_file_dir = active_file_dir;
     active_tab_file_path = active_file_path;
 
-    page_history = app.views.main.history;
-    page_count = page_history.length;
-    page_current = page_history[page_count - 1];
-
     if (page_current.split('/')[1] === "designer") {
+        // save design html
         editor_value = editor.getHtml();
         editor_value = pretty(editor_value, { ocd: true });
+        fs.writeFileSync(active_file_path_designer, editor_value, 'utf-8');
+
+        we[active_file_name_designer].setValue(editor_value);
+
+        // load custom.css and save new css design
         editor_style = editor.getCss();
         editor_style = pretty(editor_style, { ocd: true });
-
-        // save designer
-        fs.writeFileSync(active_file_path, editor_value, 'utf-8');
         var customcss = path.join(path.join(active_dir_project_www, 'css'), 'custom.css');
         fs.readFile(customcss, 'utf-8', (err, code_data) => {
             var customcss_value = beautify(editor_style, { format: 'css' });
@@ -138,7 +148,7 @@ func_tab_open = function() {
         '   </span>' +
         '   <i class="icon"></i>' +
         '</a>');
-    $$(document).find('#tab-editor').append('<div id="tab-' + active_file_name_replace + '" class="page-content tab tab-active"><div style="height:100%;overflow-y: hidden;" id="editor-' + active_file_name_replace + '"></div></div>');
+    $$(document).find('#tab-editor').append('<div id="tab-' + active_file_name_replace + '" class="page-content tab tab-active"><div style="height:100%;overflow-y: hidden;overflow-x: hidden;" id="editor-' + active_file_name_replace + '"></div></div>');
 
     $$(document).find('#btn-code-remove').attr('data-file', active_file_name);
     $$(document).find('#btn-code-remove').attr('data-replace', active_file_name_replace);
@@ -153,13 +163,8 @@ func_tab_open = function() {
             app.preloader.hide();
             return;
         } else {
-            editorRequire.config({
-                baseUrl: uriFromPath(path.join(__dirname, '../node_modules/monaco-editor/min'))
-            });
-
-            editorRequire(['vs/editor/editor.main'], function() {
+            amdRequire(['vs/editor/editor.main'], function() {
                 me = monaco.editor;
-                we[active_file_name] = window.editor;
 
                 loadTheme('Monokai').then(function(callback) {
                     me.defineTheme(callback.base, {
@@ -169,30 +174,35 @@ func_tab_open = function() {
                         colors: callback.colors
                     });
                     me.setTheme(callback.base);
-
-                    we[active_file_name] = me.create(document.getElementById('editor-' + active_file_name_replace), {
-                        value: code_data,
-                        parameterHints: { enabled: true },
-                        scrollBeyondLastLine: false,
-                        fixedOverflowWidgets: true,
-                        lineNumbers: 'on',
-                        lineDecorationsWidth: 36,
-                        matchBrackets: "always",
-                        lineHeight: 19,
-                        folding: true,
-                        autoIndent: true,
-                        automaticLayout: true,
-                        foldingHighlight: true,
-                        showFoldingControls: 'always',
-                        fontLigatures: true,
-                        showUnused: true,
-                        smoothScrolling: true,
-                        language: active_file_type
-                    });
                 });
 
-                app.preloader.hide();
+                we[active_file_name] = me.create(document.getElementById('editor-' + active_file_name_replace), {
+                    value: code_data.toString(),
+                    parameterHints: {
+                        enabled: true
+                    },
+                    scrollBeyondLastLine: false,
+                    fixedOverflowWidgets: true,
+                    lineNumbers: 'on',
+                    lineDecorationsWidth: 36,
+                    matchBrackets: "always",
+                    lineHeight: 19,
+                    folding: true,
+                    autoIndent: true,
+                    automaticLayout: true,
+                    foldingHighlight: true,
+                    showFoldingControls: 'always',
+                    fontLigatures: true,
+                    showUnused: true,
+                    smoothScrolling: true,
+                    language: active_file_type
+                });
             });
+
+            // Remove class="margin" in line numbers (not good solution)
+            $$(document).find("[role=presentation]").removeClass('margin');
+
+            app.preloader.hide();
         }
     });
 }

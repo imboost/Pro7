@@ -76,13 +76,6 @@ var navigate_left_to = function(path, reloadCurrent = false, reloadPrevious = fa
     });
 }
 
-function loadTheme(theme) {
-    var path = '../node_modules/monaco-themes/themes/' + theme + '.json';
-    return fetch(path).then(r => r.json()).then(data => {
-        return data;
-    });
-}
-
 function uriFromPath(_path) {
     var pathName = path.resolve(_path).replace(/\\/g, '/');
     if (pathName.length > 0 && pathName.charAt(0) !== '/') {

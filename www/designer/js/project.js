@@ -3,8 +3,13 @@
  */
 
 $$(document).on('click', '#btn-dev', function() {
-    const { ipcRenderer } = require('electron');
     ipcRenderer.send('devtool');
+});
+
+$$(document).on('click', '#btn-reload', function() {
+    app.preloader.show();
+
+    window.location.reload();
 });
 
 panel_left_morph();
@@ -50,12 +55,6 @@ var terminal_home = function() {
         term.write(data);
     });
 }
-
-$$(document).on('click', '#btn-reload', function() {
-    app.preloader.show();
-
-    window.location.reload();
-});
 
 app.sheet.open('.sheet-terminal');
 
