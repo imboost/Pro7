@@ -9,6 +9,10 @@ Integrated Development Environment for build Progressive Web Application (PWA) b
 npm install -g yarn
 yarn global add serve
 ```
+or (ubuntu)
+```sh
+npm install -g serve
+```
 
 ## Publish (Firebase)
 1. Open cmd/terminal on your computer.

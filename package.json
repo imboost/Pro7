@@ -29,7 +29,7 @@
             "icon": "build/icon.icns"
         },
         "linux": {
-            "target": "AppImage"
+            "target": "deb"
         },
         "win": {
             "icon": "www/img/logo.png",
