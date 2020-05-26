@@ -61,6 +61,7 @@ app.sheet.open('.sheet-terminal');
 terminal_home();
 
 if (os.platform() === "darwin") {
+    ptyProcess.write('export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"\r');
     ptyProcess.write('cd ~\r');
     ptyProcess.write('cd Pro7\r');
     ptyProcess.write('cd ' + active_project + '\r');
@@ -287,45 +288,27 @@ $$(document).on('click', '#btn-app-run', function() {
 });
 
 $$(document).on('click', '#btn-app-preview-port-change', function() {
-    app.dialog.prompt('http://localhost:<span class="text-color-orange" style="font-weight:bold;">PORT</span>.<br/> Please enter port number from Terminal.', '<span class="text-color-pink">Run</span> before <span class="text-color-yellow">Preview</yellow>', function(port) {
+    app.dialog.prompt('http://localhost:<span class="text-color-orange" style="font-weight:bold;">PORT</span><br/> Please enter port number from Terminal.', '<span class="text-color-pink">Run</span> before <span class="text-color-yellow">Preview</yellow>', function(port) {
         if (port === "") {
             // Do Nothing
         } else {
             preview_port = port;
+            $$(document).find('#btn-launch-browser').attr('data-port', port);
             $$(document).find('#app-preview').empty();
             $$(document).find('#app-preview').html('<iframe src="http://localhost:' + port + '?random=' + (new Date()).getTime() + Math.floor(Math.random() * 1000000) + '" style="width:100%;height:100%;border:0px;"/>');
-            $$(document).find('#btn-app-preview-port-change').html(':' + port);
+            $$(document).find('#btn-app-preview-port-change').html(port);
         }
     });
 });
 
 $$(document).on('click', '#btn-app-preview', function() {
-    app.sheet.open('.sheet-terminal');
-
-    if (preview_port === null) {
-        app.dialog.prompt('http://localhost:<span class="text-color-orange" style="font-weight:bold;">PORT</span>.<br/> Please enter port number from Terminal.', '<span class="text-color-pink">Run</span> before <span class="text-color-yellow">Preview</yellow>', function(port) {
-            app.sheet.close('.sheet-terminal');
-            if (port === "") {
-                panel_right.close();
-            } else {
-                preview_port = port;
-                panel_right.open();
-                $$(document).find('#app-preview').empty();
-                $$(document).find('#app-preview').html('<iframe src="http://localhost:' + port + '?random=' + (new Date()).getTime() + Math.floor(Math.random() * 1000000) + '" style="width:100%;height:100%;border:0px;"/>');
-                $$(document).find('#btn-app-preview-port-change').html(':' + port);
-            }
-        }, function() {
-            panel_right.close();
-            app.sheet.close('.sheet-terminal');
-        });
-    } else {
-        app.sheet.close('.sheet-terminal');
-        var port = preview_port;
-        panel_right.open();
-        $$(document).find('#app-preview').empty();
-        $$(document).find('#app-preview').html('<iframe src="http://localhost:' + port + '?random=' + (new Date()).getTime() + Math.floor(Math.random() * 1000000) + '" style="width:100%;height:100%;border:0px;"/>');
-        $$(document).find('#btn-app-preview-port-change').html(':' + port);
-    }
+    preview_port = 5000;
+    port = preview_port;
+    panel_right.open();
+    $$(document).find('#btn-launch-browser').attr('data-port', port);
+    $$(document).find('#app-preview').empty();
+    $$(document).find('#app-preview').html('<iframe src="http://localhost:' + port + '?random=' + (new Date()).getTime() + Math.floor(Math.random() * 1000000) + '" style="width:100%;height:100%;border:0px;"/>');
+    $$(document).find('#btn-app-preview-port-change').html(port);
 });
 
 $$(document).on('click', '#btn-app-distribute', function() {
@@ -775,6 +758,12 @@ $$(document).on('click', '#btn-nowdb-macos-installer', function() {
 
 $$(document).on('click', '#btn-nowdb-linux-portable', function() {
     downloadNowDB("https://github.com/NowDB/Data-Manager/blob/master/NowDB%20Data%20Manager-1.1.0.AppImage?raw=true", path.join(active_pro7, 'NowDB Data Manager-1.1.0.AppImage'));
+});
+
+$$(document).on('click', '#btn-launch-browser', function() {
+    var port = $$(this).attr('data-port');
+    var open = require("open");
+    open("http://localhost:" + port);
 });
 
 function downloadNowDB(url, dest, cb) {

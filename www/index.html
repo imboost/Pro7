@@ -69,16 +69,28 @@
         <div class="views ios-edges">
             <div id="view-main" class="view view-main"></div>
         </div>
-        <div class="panel panel-right panel-cover panel-resizable">
+        <div class="panel panel-right panel-cover panel-resizable" style="width: 25%;">
             <div id="view-right" class="view view-right">
                 <div class="page">
                     <div class="navbar">
                         <div class="navbar-bg"></div>
                         <div class="navbar-inner">
-                            <div class="title" style="font-weight:normal;">App Preview</div>
-                            <div class="right">
-                                <a class="button icon-only text-color-gray" title="Change Port" id="btn-app-preview-port-change"></a>
+                            <div class="left">
+                                <a class="button icon-only text-color-yellow" title="Change Port" id="btn-app-preview-port-change"></a>
                             </div>
+                            <div class="title" id="page-title-right" style="font-weight:normal;"></div>
+                            <div class="right">
+                                <a class="button icon-only text-color-red panel-close" title="Close">
+                                    <i class="icon f7-icons">multiply_circle</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="toolbar toolbar-top">
+                        <div class="toolbar-inner">
+                            <a href="#" class="link"></a>
+                            <a href="#" class="link padding" id="btn-launch-browser"><button class="button button-outline button-round button-small" style="font-weight:normal;">Launch on Browser</button></a>
+                            <a href="#" class="link"></a>
                         </div>
                     </div>
                     <div class="page-content" id="app-preview" style="overflow-y:hidden;"></div>

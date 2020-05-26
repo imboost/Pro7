@@ -9,17 +9,10 @@ var app = new Framework7({
     touch: {
         fastclick: true,
         materialRipple: false
+    },
+    panel: {
+        closeByBackdropClick: false
     }
-});
-
-var view_left = app.views.create('#view-left', {
-    url: '/'
-});
-
-var view_left = app.views.create('#view-right');
-
-var view_main = app.views.create('#view-main', {
-    url: '/'
 });
 
 var panel_left = app.panel.create({
@@ -30,6 +23,13 @@ var panel_left = app.panel.create({
 
 var panel_right = app.panel.create({
     el: '.panel-right',
-    resizable: true,
-    closeByBackdropClick: false
+    resizable: true
 });
+
+var view_main = app.views.create('#view-main', {
+    url: '/'
+});
+
+var view_left = app.views.create('#view-left');
+
+var view_right = app.views.create('#view-right');
