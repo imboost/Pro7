@@ -700,3 +700,119 @@ $$(document).on('click', '#code-dialog-progress-percent', function() {
     we[active_tab_file].setValue(splitedText.join("\n"));
     we[active_tab_file].setPosition(position);
 });
+
+$$(document).on('click', '#code-ajax-f7-post', function() {
+    app.popover.close();
+
+    var position = we[active_tab_file].getPosition();
+    var text = we[active_tab_file].getValue(position);
+    var splitedText = text.split("\n");
+    var lineContent = splitedText[position.lineNumber - 1];
+    var textToInsert = 'function post() {\n' +
+        '\tvar data_post = {\n' +
+        '\t\tattribute_1: "value_1",\n' +
+        '\t\tattribute_2: "value_2"\n' +
+        '\t}\n\n' +
+        '\tvar request = Framework7.request({\n' +
+        '\t\tasync: false,\n' +
+        '\t\tcrossDomain: true,\n' +
+        '\t\tmethod: "POST",\n' +
+        '\t\turl: "https://myapi/post",\n' +
+        '\t\tdata: data_post,\n' +
+        '\t\tsuccess: function(data) {\n' +
+        '\t\t\treturn data;\n' +
+        '\t\t}\n' +
+        '\t});\n\n' +
+        '\tvar response = JSON.parse(request.responseText);\n' +
+        '\treturn response;\n' +
+        '}\n\n' +
+        'var return_post = post();';
+    splitedText[position.lineNumber - 1] = [lineContent.slice(0, position.column - 1), textToInsert, lineContent.slice(position.column - 1)].join(''); // Append the text exactly at the selected position (position.column -1)
+    we[active_tab_file].setValue(splitedText.join("\n"));
+    we[active_tab_file].setPosition(position);
+});
+
+$$(document).on('click', '#code-ajax-f7-get', function() {
+    app.popover.close();
+
+    var position = we[active_tab_file].getPosition();
+    var text = we[active_tab_file].getValue(position);
+    var splitedText = text.split("\n");
+    var lineContent = splitedText[position.lineNumber - 1];
+    var textToInsert = 'function get(){\n' +
+        '\tvar uri = "select_id"\n\n' +
+        '\tvar request = Framework7.request({\n' +
+        '\t\tasync: false,\n' +
+        '\t\tcrossDomain: true,\n' +
+        '\t\tmethod: "GET",\n' +
+        '\t\turl: "https://myapi/" + uri,\n' +
+        '\t\tsuccess: function (data) {\n' +
+        '\t\t\treturn data;\n' +
+        '\t\t}\n' +
+        '\t});\n\n' +
+        '\tvar response = JSON.parse(request.responseText);\n' +
+        '\treturn response;\n' +
+        '}\n\n' +
+        'var return_get = get();';
+    splitedText[position.lineNumber - 1] = [lineContent.slice(0, position.column - 1), textToInsert, lineContent.slice(position.column - 1)].join(''); // Append the text exactly at the selected position (position.column -1)
+    we[active_tab_file].setValue(splitedText.join("\n"));
+    we[active_tab_file].setPosition(position);
+});
+
+$$(document).on('click', '#code-ajax-f7-delete', function() {
+    app.popover.close();
+
+    var position = we[active_tab_file].getPosition();
+    var text = we[active_tab_file].getValue(position);
+    var splitedText = text.split("\n");
+    var lineContent = splitedText[position.lineNumber - 1];
+    var textToInsert = 'function remove() {\n' +
+        '\tvar uri = "remove";\n\n' +
+        '\tvar request = Framework7.request({\n' +
+        '\t\tasync: false,\n' +
+        '\t\tcrossDomain: true,\n' +
+        '\t\tmethod: "DELETE",\n' +
+        '\t\turl: "https://myapi/" + uri,\n' +
+        '\t\tsuccess: function(data) {\n' +
+        '\t\t\treturn data;\n' +
+        '\t\t}\n' +
+        '\t});\n\n' +
+        '\tvar response = JSON.parse(request.responseText);\n' +
+        '\treturn response;\n' +
+        '}\n\n' +
+        'var return_remove = remove();';
+    splitedText[position.lineNumber - 1] = [lineContent.slice(0, position.column - 1), textToInsert, lineContent.slice(position.column - 1)].join(''); // Append the text exactly at the selected position (position.column -1)
+    we[active_tab_file].setValue(splitedText.join("\n"));
+    we[active_tab_file].setPosition(position);
+});
+
+$$(document).on('click', '#code-ajax-f7-put', function() {
+    app.popover.close();
+
+    var position = we[active_tab_file].getPosition();
+    var text = we[active_tab_file].getValue(position);
+    var splitedText = text.split("\n");
+    var lineContent = splitedText[position.lineNumber - 1];
+    var textToInsert = 'function update() {\n' +
+        '\tvar data_post = {\n' +
+        '\t\tattribute_1: "value_1",\n' +
+        '\t\tattribute_2: "value_2"\n' +
+        '\t}\n\n' +
+        '\tvar request = Framework7.request({\n' +
+        '\t\tasync: false,\n' +
+        '\t\tcrossDomain: true,\n' +
+        '\t\tmethod: "PUT",\n' +
+        '\t\turl: "https://myapi/update",\n' +
+        '\t\tdata: data_post,\n' +
+        '\t\tsuccess: function(data) {\n' +
+        '\t\t\treturn data;\n' +
+        '\t\t}\n' +
+        '\t});\n\n' +
+        '\tvar response = JSON.parse(request.responseText);\n' +
+        '\treturn response;\n' +
+        '}\n\n' +
+        'var return_update = update();';
+    splitedText[position.lineNumber - 1] = [lineContent.slice(0, position.column - 1), textToInsert, lineContent.slice(position.column - 1)].join(''); // Append the text exactly at the selected position (position.column -1)
+    we[active_tab_file].setValue(splitedText.join("\n"));
+    we[active_tab_file].setPosition(position);
+});
