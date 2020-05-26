@@ -1,7 +1,7 @@
 {
     "name": "pro7",
     "productName": "Pro7",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Pro7 is Integrated Development Environment for build Progressive Web Application (PWA) based on Framework7. It enables user to design, develop, debug, test, and release application quickly.",
     "main": "main.js",
     "scripts": {
@@ -14,8 +14,7 @@
     "build": {
         "appId": "com.nowdb.pro7",
         "dmg": {
-            "contents": [
-                {
+            "contents": [{
                     "x": 110,
                     "y": 150
                 },

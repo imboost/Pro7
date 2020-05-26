@@ -197,10 +197,11 @@ func_tab_open = function() {
                     smoothScrolling: true,
                     language: active_file_type
                 });
+
+                // Remove class="margin" in line numbers (not good solution)
+                $$(document).find("[role=presentation]").removeClass('margin');
             });
 
-            // Remove class="margin" in line numbers (not good solution)
-            $$(document).find("[role=presentation]").removeClass('margin');
 
             app.preloader.hide();
         }
