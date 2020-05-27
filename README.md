@@ -4,7 +4,7 @@ Integrated Development Environment for build Progressive Web Application (PWA) b
 ## Instalation
 1. [Download latest executable release](https://github.com/NowDB/Pro7/releases).
 2. Open cmd/terminal on your computer.
-3. Install some packages using bellow command to support your app building.
+3. Install packages using bellow command to support your app building.
 ```sh
 npm install -g yarn
 yarn global add serve
