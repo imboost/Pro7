@@ -6,17 +6,16 @@ Integrated Development Environment for build Progressive Web Application (PWA) b
 ## Instalation
 1. [Download latest executable release](https://github.com/NowDB/Pro7/releases/tag/v0.0.3).
 2. Open cmd/terminal on your computer.
-3. Install serve using yarn or npm.
-yarn
+3. Install serve using yarn.
 ```sh
 npm install -g yarn
 yarn global add serve
 ```
-npm
+3. or Install serve using npm.
 ```sh
 npm install -g serve
 ```
-4. Test serve on your cmd/terminal.
+5. Test serve on your cmd/terminal.
 ```sh
 serve -v
 ```
