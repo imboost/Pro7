@@ -2,14 +2,13 @@
 
 Integrated Development Environment for build Progressive Web Application (PWA) based on Framework7. It enables user to design, develop, debug, test, and release application quickly.
 
-Windows|MacOS|Ubuntu
---|--|--
-[Download](https://github.com/NowDB/Pro7/releases/download/v0.0.3/Pro7.Setup.0.0.3.exe)|[Download](https://github.com/NowDB/Pro7/releases/download/v0.0.3/Pro7-0.0.3.dmg)|[Download](https://github.com/NowDB/Pro7/releases/download/v0.0.3/pro7_0.0.3_amd64.deb)
+Windows|MacOS|Ubuntu|Other
+--|--|--|--
+[Download](https://github.com/NowDB/Pro7/releases/download/v0.0.3/Pro7.Setup.0.0.3.exe)|[Download](https://github.com/NowDB/Pro7/releases/download/v0.0.3/Pro7-0.0.3.dmg)|[Download](https://github.com/NowDB/Pro7/releases/download/v0.0.3/pro7_0.0.3_amd64.deb)|[Download](https://github.com/NowDB/Pro7/releases/tag/v0.0.3)
 
 ## Instalation
-1. [Download latest executable release](https://github.com/NowDB/Pro7/releases/tag/v0.0.3).
-2. Open cmd/terminal on your computer.
-3. Install serve using yarn.
+1. Open cmd/terminal on your computer.
+2. Install serve using yarn.
 ```sh
 npm install -g yarn
 yarn global add serve
@@ -18,7 +17,7 @@ yarn global add serve
 ```sh
 npm install -g serve
 ```
-5. Test serve on your cmd/terminal.
+4. Test serve on your cmd/terminal.
 ```sh
 serve -v
 ```
