@@ -1,5 +1,1 @@
 theme: jekyll-theme-cayman
-github:
-  windows_url: https://github.com/NowDB/Pro7/releases/download/v0.0.3/Pro7.Setup.0.0.3.exe
-  macos_url: https://github.com/NowDB/Pro7/releases/download/v0.0.3/Pro7-0.0.3.dmg
-  ubuntu_url: https://github.com/NowDB/Pro7/releases/download/v0.0.3/pro7_0.0.3_amd64.deb
