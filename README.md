@@ -2,6 +2,10 @@
 
 Integrated Development Environment for build Progressive Web Application (PWA) based on Framework7. It enables user to design, develop, debug, test, and release application quickly.
 
+aa|bb|cc
+--|--|--
+ee|ff|gg 
+
 ## Instalation
 1. [Download latest executable release](https://github.com/NowDB/Pro7/releases/tag/v0.0.3).
 2. Open cmd/terminal on your computer.
