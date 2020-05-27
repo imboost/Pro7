@@ -47,7 +47,7 @@ firebase init
 ? Configure as a single-page app (rewrite all urls to /index.html)? Yes
 ? File www/index.html already exists. Overwrite? No
 ```
-9. Klik Firebase Deploy from your Project on Pro7.
+9. Click Firebase Deploy from your Project on Pro7.
 10. Access the link show on your Project Terminal.
 
 ## Usefull Links
