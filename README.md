@@ -46,6 +46,7 @@ firebase init
 10. Access the link show on your Project Terminal.
 
 ## Usefull Links
-1. [PWA](https://web.dev/progressive-web-apps/)
-2. [PWA manifest & icons generator](https://app-manifest.firebaseapp.com/)
-3. [Favicons generator](https://www.favicon-generator.org/)
+1. [Framework7](https://framework7.io/)
+2. [PWA](https://web.dev/progressive-web-apps/)
+3. [PWA manifest & icons generator](https://app-manifest.firebaseapp.com/)
+4. [Favicons generator](https://www.favicon-generator.org/)
