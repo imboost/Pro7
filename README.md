@@ -1,6 +1,6 @@
 # Pro7
 Integrated Development Environment for build Progressive Web Application (PWA) based on Framework7. It enables user to design, develop, debug, test, and release application quickly.
-![alt text](https://raw.githubusercontent.com/NowDB/Pro7/master/www/img/ide.png "Pro7 IDE"){:width="70%"}
+![alt text](https://raw.githubusercontent.com/NowDB/Pro7/master/www/img/ide.png "Pro7 IDE"){:width="100%"}
 
 ## Instalation
 1. [Download latest executable release](https://github.com/NowDB/Pro7/releases).
