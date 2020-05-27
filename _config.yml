@@ -1,1 +1,65 @@
 theme: jekyll-theme-cayman
+languageCode:           "en"
+title:                  "Pro7"
+enableInlineShortcodes: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe:           true
+  highlight:
+    noClasses:          false
+  tableOfContents:
+    startLevel:         2
+    endLevel:           6
+
+buildDrafts:            true
+buildFuture:            true
+
+enableRobotsTXT:        true
+metaDataFormat:         "yaml"
+disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
+
+module:
+  mounts:
+    - source:           dist
+      target:           static/docs/5.0/dist
+    - source:           site/assets
+      target:           assets
+    - source:           site/content
+      target:           content
+    - source:           site/data
+      target:           data
+    - source:           site/layouts
+      target:           layouts
+    - source:           site/static
+      target:           static
+    - source:           site/static/docs/5.0/assets/img/favicons/apple-touch-icon.png
+      target:           static/apple-touch-icon.png
+    - source:           site/static/docs/5.0/assets/img/favicons/favicon.ico
+      target:           static/favicon.ico
+
+params:
+  description:          "The most popular HTML, CSS, and JS library in the world."
+  authors:              "Taufik Sulaeman P"
+  social_image_path:    /docs/5.0/assets/brand/bootstrap-social.png
+  social_logo_path:     /docs/5.0/assets/brand/bootstrap-social-logo.png
+
+  current_version:      "5.0.0-alpha1"
+  current_ruby_version: "5.0.0-alpha1"
+  docs_version:         "5.0"
+  rfs_version:          "9.0.2"
+  github_org:           "https://github.com/twbs"
+  repo:                 "https://github.com/twbs/bootstrap"
+  twitter:              "getbootstrap"
+  slack:                "https://bootstrap-slack.herokuapp.com/"
+  opencollective:       "https://opencollective.com/bootstrap"
+  blog:                 "https://blog.getbootstrap.com/"
+  expo:                 "https://expo.getbootstrap.com/"
+  themes:               "https://themes.getbootstrap.com/"
+  icons:                "https://icons.getbootstrap.com/"
+
+  download:
+    source:             "https://github.com/twbs/bootstrap/archive/v5.0.0-alpha1.zip"
+    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.0.0-alpha1/bootstrap-5.0.0-alpha1-dist.zip"
+    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.0.0-alpha1/bootstrap-5.0.0-alpha1-examples.zip"
