@@ -1,19 +1,24 @@
 # Pro7
-Integrated Development Environment for build Progressive Web Application (PWA) based on Framework7. It enables user to design, develop, debug, test, and release application quickly.
-
 ![alt text](https://raw.githubusercontent.com/NowDB/Pro7/master/www/img/ide.png "Pro7 IDE"){:width="100%"}
 
+Integrated Development Environment for build Progressive Web Application (PWA) based on Framework7. It enables user to design, develop, debug, test, and release application quickly.
+
 ## Instalation
-1. [Download latest executable release](https://github.com/NowDB/Pro7/releases).
+1. [Download latest executable release](https://github.com/NowDB/Pro7/releases/tag/v0.0.3).
 2. Open cmd/terminal on your computer.
-3. Install packages using bellow command to support your app building.
+3. Install serve using yarn or npm.
+yarn
 ```sh
 npm install -g yarn
 yarn global add serve
 ```
-or (ubuntu)
+npm
 ```sh
 npm install -g serve
+```
+4. Test serve on your cmd/terminal.
+```sh
+serve -v
 ```
 
 ## Publish (Firebase)
