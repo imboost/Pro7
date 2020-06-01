@@ -32,7 +32,7 @@
         },
         "win": {
             "icon": "www/img/logo.png",
-            "target": "nsis"
+            "target": "portable"
         }
     },
     "publish": "never",
