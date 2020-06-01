@@ -11,7 +11,7 @@ var app = new Framework7({
         materialRipple: false
     },
     panel: {
-        closeByBackdropClick: false
+        closeByBackdropClick: true
     }
 });
 

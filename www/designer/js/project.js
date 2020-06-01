@@ -295,7 +295,8 @@ $$(document).on('click', '#btn-app-preview-port-change', function() {
             preview_port = port;
             $$(document).find('#btn-launch-browser').attr('data-port', port);
             $$(document).find('#app-preview').empty();
-            $$(document).find('#app-preview').html('<iframe src="http://localhost:' + port + '?random=' + (new Date()).getTime() + Math.floor(Math.random() * 1000000) + '" style="width:100%;height:100%;border:0px;"/>');
+            $$(document).find('#app-preview').html('<webview id="app-webview" src="http://localhost:' + port + '?random=' + (new Date()).getTime() + Math.floor(Math.random() * 1000000) + '" style="width:100%;height:100%;border:0px;"/></webview>');
+            app_webview = $$(document).find('#app-webview');
             $$(document).find('#btn-app-preview-port-change').html(port);
         }
     });
@@ -307,8 +308,63 @@ $$(document).on('click', '#btn-app-preview', function() {
     panel_right.open();
     $$(document).find('#btn-launch-browser').attr('data-port', port);
     $$(document).find('#app-preview').empty();
-    $$(document).find('#app-preview').html('<iframe src="http://localhost:' + port + '?random=' + (new Date()).getTime() + Math.floor(Math.random() * 1000000) + '" style="width:100%;height:100%;border:0px;"/>');
+    $$(document).find('#app-preview').html('<webview id="app-webview" src="http://localhost:' + port + '?random=' + (new Date()).getTime() + Math.floor(Math.random() * 1000000) + '" style="width:100%;height:100%;border:0px;"/></webview>');
+    app_webview = $$(document).find('#app-webview');
+    app_webview[0].addEventListener('did-start-loading', browserStart);
+    app_webview[0].addEventListener('did-stop-loading', browserStop);
     $$(document).find('#btn-app-preview-port-change').html(port);
+});
+
+const browserStart = () => {
+    app.preloader.show();
+}
+
+const browserStop = () => {
+    app.preloader.hide();
+}
+
+function validURL(str) {
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return !!pattern.test(str);
+}
+
+panel_right.on('opened', function() {
+    app_webview[0].reloadIgnoringCache();
+});
+
+$$(document).on('click', '#app-webview-reload', function() {
+    app_webview[0].reloadIgnoringCache();
+});
+
+$$(document).on('click', '#app-webview-devtools', function() {
+    app_webview[0].openDevTools();
+});
+
+$$(document).on('click', '#app-webview-go', function() {
+    var app_webview_url = $$(document).find('#app-webview-url').val();
+    if (app_webview_url === "") {
+        // Do Nothing
+    } else {
+        if (validURL(app_webview_url) === true) {
+            let https = app_webview_url.slice(0, 8).toLowerCase();
+            let http = app_webview_url.slice(0, 7).toLowerCase();
+            if (https === 'https://') {
+                app_webview[0].loadURL(app_webview_url);
+                $$(document).find('#app-webview-url').val(app_webview_url.toLowerCase());
+            } else if (http === 'http://') {
+                app_webview[0].loadURL(app_webview_url);
+                $$(document).find('#app-webview-url').val(app_webview_url.toLowerCase());
+            } else {
+                app_webview[0].loadURL('http://' + app_webview_url);
+                $$(document).find('#app-webview-url').val('http://' + app_webview_url.toLowerCase());
+            }
+        }
+    }
 });
 
 $$(document).on('click', '#btn-app-distribute', function() {

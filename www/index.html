@@ -9,6 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/framework7.bundle.min.css">
     <link rel="stylesheet" href="css/framework7-icons.css">
     <link rel="stylesheet" href="fonts/material-icons.css">
@@ -23,7 +24,7 @@
         <div class="appbar" style="background-color:#2C333B">
             <div class="appbar-inner no-padding">
                 <div class="left no-margin text-color-white" style="height: 100%;width: 90%;-webkit-app-region: drag;padding-left: 15px;">
-                    Pro7&nbsp;<span style="font-size: xx-small;">0.0.3</span>
+                    Pro7&nbsp;<span style="font-size: xx-small;">0.0.4</span>
                 </div>
                 <div class="right" style="padding-right: 11px;">
                     <a class="link" title="Dev Tools" id="btn-dev" style="margin-right: 10px;">
@@ -71,11 +72,11 @@
         </div>
         <div class="panel panel-right panel-cover panel-resizable" style="width: 25%;">
             <div id="view-right" class="view view-right">
-                <div class="page">
+                <div class="page" data-name="panel-right">
                     <div class="navbar">
                         <div class="navbar-bg"></div>
                         <div class="navbar-inner">
-                            <div class="left">
+                            <!-- <div class="left">
                                 <a class="button icon-only text-color-yellow" title="Change Port" id="btn-app-preview-port-change"></a>
                             </div>
                             <div class="title" id="page-title-right" style="font-weight:normal;"></div>
@@ -83,14 +84,23 @@
                                 <a class="button icon-only text-color-red panel-close" title="Close">
                                     <i class="icon f7-icons">multiply_circle</i>
                                 </a>
+                            </div> -->
+                            <div class="left">
+                                <a class="button icon-only text-color-white" title="Reload" id="app-webview-reload">
+                                    <i class="icon f7-icons">arrow_2_circlepath_circle</i>
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="toolbar toolbar-top">
-                        <div class="toolbar-inner">
-                            <a href="#" class="link"></a>
-                            <a href="#" class="link padding" id="btn-launch-browser"><button class="button button-outline button-round button-small" style="font-weight:normal;">Open in Browser</button></a>
-                            <a href="#" class="link"></a>
+                            <div class="title" id="page-title-right" style="font-weight:normal;">
+                                <input type="url" style="width: 100%;" id="app-webview-url" placeholder="http://host:port" value="http://localhost:5000" />
+                            </div>
+                            <div class="right">
+                                <a class="button icon-only text-color-gray" title="Developer Tools" id="app-webview-devtools">
+                                    <i class="icon f7-icons">grid_circle</i>
+                                </a>
+                                <a class="button icon-only text-color-white" title="Go" id="app-webview-go">
+                                    <i class="icon f7-icons">arrow_right_circle</i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="page-content" id="app-preview" style="overflow-y:hidden;"></div>

@@ -49,3 +49,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.panel {
+    min-width: 30%;
+}

@@ -13,14 +13,13 @@ function createWindow() {
         frame: false,
         resizable: true,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            webviewTag: true
         },
         icon: path.join(__dirname, '/www/img/256x256.png')
     });
 
     mainWindow.loadFile('www/index.html');
-
-    // mainWindow.webContents.openDevTools();
 
     mainWindow.on('closed', function() {
         mainWindow = null
